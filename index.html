@@ -14,7 +14,7 @@
 <div class="cover">
     <div class="content">
         <form class="Calculator" name="calc">
-            <input type="text" readonly class="value" name="txt">
+            <input type="text" placeholder="0" readonly class="value" id="input" name="txt">
             <span class="num clear" onclick="calc.txt.value  = '' ">C</span>
             <span class="num" onclick="document.calc.txt.value  += '/' ">/</span>
             <span class="num" onclick="document.calc.txt.value  += '*' ">*</span>
@@ -30,12 +30,12 @@
             <span class="num" onclick="document.calc.txt.value  += '2' ">2</span>
             <span class="num" onclick="document.calc.txt.value  += '3' ">3</span>
             <span class="num" onclick="document.calc.txt.value  += '0' ">0</span>
-            <span class="num" onclick="document.calc.txt.value  += '00' ">00</span>
-            <span class="num" onclick="document.calc.txt.value  += '.' ">.</span>
-            <span class="num equal" onclick="document.calc.txt.value    =eval(calc.txt.value)">=</span>
+            <span class="num" id="percentage" onclick="document.calc.txt.value  += '%' ">%</span>
+            <span class="num" onclick="del()">Del</span>
+            <span class="num equal" onclick="answer()" >=</span>
         </form>
     </div>
-   </div> 
+</div> 
 
     <script type="text/javascript" src="./vanilla-tilt.js"></script>
 
@@ -46,6 +46,25 @@
             glare: true,
             "max-glare": 0.5,   
         });
+        
+        del = () => {
+            const txt = document.getElementById("input");
+            txt.value = txt.value.slice(0, -1)
+           
+        }
+
+        answer = () => {
+            const percentage = document.getElementById("percentage");
+            const txt = document.getElementById("input").value;
+            if( txt.includes("%") ){ 
+                let newAns = txt.replaceAll("%", "/100")
+                document.calc.txt.value = eval(newAns)
+            }
+            
+        else {
+            document.calc.txt.value = eval(calc.txt.value)};
+        }
+
     </script>
 </body>
 </html>

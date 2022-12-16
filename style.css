@@ -18,7 +18,7 @@ body{
     font-family: 'Open Sans Hebrew', sans-serif;
 }
 
-/* @keyframes change {
+@keyframes change {
     0%{
         background-position: 0% 50%;
     }
@@ -28,7 +28,7 @@ body{
     100%{
         background-position: 0% 50%;
     }
-} */
+}
 
 body::before{
     content: '';
